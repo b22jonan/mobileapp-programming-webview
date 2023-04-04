@@ -33,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
 
         my_webview.getSettings().setJavaScriptEnabled(true);
 
+        my_webview.loadUrl("file:///android_asset/index.html");
+
         /*
          * Rename your App. Tip: Values->Strings
          * Enable Internet access for your App. Tip: Manifest
