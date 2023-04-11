@@ -11,13 +11,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 public class MainActivity extends AppCompatActivity {
-
+    private WebView my_webView;
     public void showExternalWebPage() {
-        // TODO: Add your code for showing external web page here
+        my_webView.loadUrl("https://www.youtube.com/");
     }
 
     public void showInternalWebPage() {
-        // TODO: Add your code for showing internal web page here
+        my_webView.loadUrl("file:///android_asset/index.html");
     }
 
     @Override
@@ -27,13 +27,13 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        WebView my_webview = (WebView) findViewById(R.id.my_webView);
+        my_webView = (WebView) findViewById(R.id.my_webView);
         WebViewClient my_webview_client = new WebViewClient();
-        my_webview.setWebViewClient(my_webview_client);
+        my_webView.setWebViewClient(my_webview_client);
 
-        my_webview.getSettings().setJavaScriptEnabled(true);
+        my_webView.getSettings().setJavaScriptEnabled(true);
 
-        my_webview.loadUrl("file:///android_asset/index.html");
+        my_webView.loadUrl("file:///android_asset/index.html");
 
         /*
          * Rename your App. Tip: Values->Strings
@@ -78,11 +78,13 @@ public class MainActivity extends AppCompatActivity {
         // noinspection SimplifiableIfStatement
         if (id == R.id.action_external_web) {
             Log.d("==>", "Will display external web page");
+            showExternalWebPage();
             return true;
         }
 
         if (id == R.id.action_internal_web) {
             Log.d("==>", "Will display internal web page");
+            showInternalWebPage();
             return true;
         }
 
